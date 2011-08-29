@@ -6,8 +6,8 @@ import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public abstract class Instance{
-	Map<Class, Map<Integer, ?>> elementsByClass;
-	Map listeners;
+	Map<Class<?>, Map<Integer, ?>> elementsByClass;
+	//Map listeners; FIXME unused code
 	
 	
 	private <T> Map<Integer, T> getIndex(Class<T> c){
@@ -30,7 +30,7 @@ public abstract class Instance{
 	}
 	
 	public <T> void put(int id, T obj){
-		Class c = obj.getClass();
+		Class<T> c = (Class<T>)obj.getClass();
 		
 		getIndex(c).put(id, obj);
 	}
